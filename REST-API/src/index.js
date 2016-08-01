@@ -15,6 +15,8 @@ app.get('/author/:id/books', authorsController.getBooksByAuthor);
 app.get('/books', booksController.getBooks);
 app.get('/book/:id', booksController.getBook);
 
-app.listen(80, () => {
-  console.log('app started on port 80');
+const port = process.env.NODE_ENV ? 80 : 3000;
+
+app.listen(port, () => {
+  console.log(`app started on port ${port}`);
 });

@@ -1,5 +1,4 @@
 import {authors, books} from './db';
-//import {toResource as toBookResource} from './booksController';
 import {toLink as toBookLink} from './booksController';
 
 export function toLink(req, author) {
