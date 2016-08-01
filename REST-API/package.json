@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.11.6",
+    "cors": "^2.7.1",
     "express": "^4.14.0"
   }
 }

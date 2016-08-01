@@ -1,8 +1,11 @@
 import express from 'express';
+import cors from 'cors';
 import authorsController from './authorsController';
 import booksController from './booksController';
 
 const app = express();
+app.use(cors());
+
 app.set('json spaces', 2);
 
 app.get('/authors', authorsController.getAuthors);
