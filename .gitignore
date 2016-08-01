@@ -38,3 +38,6 @@ jspm_packages
 
 # Node build directory
 build
+
+# OSX
+.DS_Store

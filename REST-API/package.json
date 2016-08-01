@@ -1,17 +1,7 @@
 {
-  "name": "express-starter",
+  "name": "REST-API",
   "version": "0.0.1",
-  "description": "Starter kit for building an express/node app using babel for ES6 and await/async support.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/robzhu/express-starter.git"
-  },
-  "author": "robzhu",
-  "license": "BSD-2-Clause",
-  "bugs": {
-    "url": "https://github.com/robzhu/express-starter/issues"
-  },
-  "homepage": "https://github.com/robzhu/express-starter#readme",
+  "description": "Demo REST API",
   "babel": {
     "presets": [
       "es2015"
