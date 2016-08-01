@@ -1,5 +1,6 @@
 import {authors, books} from './db';
-import {toResource as toBookResource} from './booksController';
+//import {toResource as toBookResource} from './booksController';
+import {toLink as toBookLink} from './booksController';
 
 export function toLink(req, author) {
   return `http://${req.headers.host}/author/${author.id}`;
@@ -39,7 +40,11 @@ class authorsController {
     const authorId = Number(req.params.id);
     const booksByAuthor = books.filter(book => book.authorId === authorId);
     res.send(booksByAuthor.map(
-      book => toBookResource(req, book)
+      book => {
+        return {
+          href: toBookLink(req, book)
+        };
+      }
     ));
   }
 }
