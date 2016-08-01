@@ -1,5 +1,6 @@
 FROM node:4.4-slim
 
+ENV NODE_ENV production
 EXPOSE 80
 
 # Run 'npm run build' first
