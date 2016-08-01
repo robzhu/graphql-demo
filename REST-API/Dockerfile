@@ -5,10 +5,11 @@ EXPOSE 80
 # Run 'npm run build' first
 
 RUN mkdir /app
-ADD build /app
+RUN mkdir /app/build
+ADD build /app/build
 ADD package.json /app
 WORKDIR /app
 
-RUN npm install
+RUN npm install --production
 
 CMD npm start

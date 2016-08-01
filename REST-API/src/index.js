@@ -3,6 +3,7 @@ import authorsController from './authorsController';
 import booksController from './booksController';
 
 const app = express();
+app.set('json spaces', 2);
 
 app.get('/authors', authorsController.getAuthors);
 app.get('/author/:id', authorsController.getAuthor);
