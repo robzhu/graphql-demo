@@ -7,7 +7,6 @@ export function toLink(req, book) {
 
 export function toResource(req, book) {
   const author = authors[book.authorId];
-
   return {
     href: toLink(req, book),
     title: book.title,

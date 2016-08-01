@@ -16,7 +16,6 @@ export function toResource(req, author) {
 }
 
 class authorsController {
-
   getAuthors(req, res) {
     const authorRefs = authors.map(
       author => {
