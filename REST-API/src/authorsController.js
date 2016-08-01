@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {authors, books} from './db';
 import {toResource as toBookResource} from './booksController';
 
