@@ -2,11 +2,14 @@ import express from 'express';
 import cors from 'cors';
 import authorsController from './authorsController';
 import booksController from './booksController';
+import everythingController from './everythingController';
 
 const app = express();
 app.use(cors());
 
 app.set('json spaces', 2);
+
+app.get('/everything', everythingController.getEverything);
 
 app.get('/authors', authorsController.getAuthors);
 app.get('/author/:id', authorsController.getAuthor);

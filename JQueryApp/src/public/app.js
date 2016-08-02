@@ -31,9 +31,17 @@ function buildBookElement(book) {
   return book.title;
 }
 
+const API_URL = 'http://api.graphql.tk/authors';
+const EVERYTHING_URL = 'http://localhost:3000/everything';
+
 $(document).ready( _ => {
   console.log('document ready');
-  $.get('http://api.graphql.tk/authors', authorLinks => {
+  fetchDataV1();
+  //fetchDataV2();
+});
+
+function fetchDataV1() {
+  $.get(API_URL, authorLinks => {
     authorLinks.forEach(authorLink => {
       $.get(authorLink.href, author => {
         $('#authors').append(buildAuthorElement(author));
@@ -49,4 +57,18 @@ $(document).ready( _ => {
       })
     });
   });
-});
+}
+
+function fetchDataV2() {
+  $.get(EVERYTHING_URL, authors => {
+    console.log(authors);
+    authors.forEach(author => {
+      $('#authors').append(buildAuthorElement(author));
+      author.books.forEach(book => {
+        const selector = '#' + getAuthorId(author) + ' .books';
+        const bookElement = buildBookElement(book);
+        $(selector).append(bookElement);
+      })
+    });
+  });
+}
