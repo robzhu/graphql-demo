@@ -1,0 +1,35 @@
+{
+  "name": "REST-API",
+  "version": "0.0.1",
+  "description": "Demo REST API",
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "syntax-async-functions",
+      "transform-regenerator",
+      "transform-runtime"
+    ]
+  },
+  "scripts": {
+    "build": "babel src -d build",
+    "start": "node build/index.js",
+    "dev": "babel-watch src/index.js"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-plugin-syntax-async-functions": "^6.8.0",
+    "babel-plugin-transform-regenerator": "^6.11.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-watch": "^2.0.2"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.11.6",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "express-graphql": "^0.5.3",
+    "graphql": "^0.6.2"
+  }
+}
