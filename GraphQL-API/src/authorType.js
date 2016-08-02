@@ -17,7 +17,6 @@ const authorType = new GraphQLObjectType({
     books: {
       type: new GraphQLList(bookType),
       resolve: (author) => {
-        console.log(author);
         const authorsBooks = books.filter(
           book => book.authorId === author.id
         );

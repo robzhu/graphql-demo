@@ -1,6 +1,6 @@
 
 function getAuthorId(author) {
-  return 'author' + author.href.split('/').pop();
+  return 'author' + author.name.split(' ').pop();
 }
 
 function buildAuthorElement(author) {
@@ -16,7 +16,7 @@ function buildAuthorElement(author) {
 }
 
 function getBookId(book) {
-  return 'book' + book.href.split('/').pop();
+  return 'book' + book.title.split(' ').pop();
 }
 
 function buildBookElement(book) {
@@ -36,8 +36,9 @@ const EVERYTHING_URL = 'http://localhost:3000/everything';
 
 $(document).ready( _ => {
   console.log('document ready');
-  fetchDataV1();
+  //fetchDataV1();
   //fetchDataV2();
+  fetchDataV3();
 });
 
 function fetchDataV1() {
@@ -60,15 +61,40 @@ function fetchDataV1() {
 }
 
 function fetchDataV2() {
-  $.get(EVERYTHING_URL, authors => {
-    console.log(authors);
-    authors.forEach(author => {
-      $('#authors').append(buildAuthorElement(author));
-      author.books.forEach(book => {
-        const selector = '#' + getAuthorId(author) + ' .books';
-        const bookElement = buildBookElement(book);
-        $(selector).append(bookElement);
-      })
-    });
+  $.get(EVERYTHING_URL, authors => renderRoot(authors));
+}
+
+function renderRoot(authors) {
+  authors.forEach(author => {
+    $('#authors').append(buildAuthorElement(author));
+    author.books && author.books.forEach(book => {
+      const selector = '#' + getAuthorId(author) + ' .books';
+      const bookElement = buildBookElement(book);
+      $(selector).append(bookElement);
+    })
+  });
+}
+
+const query = `
+{
+  authors {
+    id
+    name
+    image
+    books {
+      id
+      image
+      title
+    }
+  }
+}
+`;
+
+function fetchDataV3() {
+  const url = `http://localhost:5000?query=${query}`;
+  console.log(url);
+  $.get(url, res => {
+    console.log(res.data);
+    renderRoot(res.data.authors);
   });
 }
