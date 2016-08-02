@@ -51,7 +51,7 @@ export const authors = [
   {
     id: 0,
     name: 'JRR Tolkien',
-    image: 'http://static.giantbomb.com/uploads/original/0/2848/425335-tolkien_photo_c.jpg',
+    image: 'http://i.imgur.com/l3Qtfs6.jpg',
   },
   {
     id: 1,
