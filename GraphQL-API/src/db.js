@@ -4,25 +4,25 @@ export const books = [
   {
     id: 0,
     title: 'The Hobbit',
-    image: 'https://upload.wikimedia.org/wikipedia/en/a/a9/The_Hobbit_trilogy_dvd_cover.jpg',
+    image: 'http://i.imgur.com/vZfSD7V.jpg',
     authorId: 0
   },
   {
     id: 1,
     title: 'The Fellowship of the Ring',
-    image: 'https://upload.wikimedia.org/wikipedia/en/0/0c/The_Fellowship_Of_The_Ring.jpg',
+    image: 'http://i.imgur.com/L7yJ8Z7.jpg',
     authorId: 0
   },
   {
     id: 2,
     title: 'The Two Towers',
-    image: 'http://www.chicagochorale.org/wp-content/uploads/2013/07/two+towers1.jpg',
+    image: 'http://i.imgur.com/VavivPR.jpg',
     authorId: 0
   },
   {
     id: 3,
     title: 'The Return of the King',
-    image: 'http://vignette4.wikia.nocookie.net/lotr/images/7/77/The_Return_of_the_King_Poster_01.jpg/revision/latest?cb=20150203042330',
+    image: 'http://i.imgur.com/pcRDJmy.jpg',
     authorId: 0
   },
 
@@ -56,6 +56,6 @@ export const authors = [
   {
     id: 1,
     name: 'JK Rowling',
-    image: 'http://vignette4.wikia.nocookie.net/harrypotter/images/3/3e/JKRowling.jpg/revision/latest?cb=20151001174249',
+    image: 'http://i.imgur.com/Bx5eIze.jpg',
   },
 ];
