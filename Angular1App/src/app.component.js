@@ -11,9 +11,9 @@ class AppComponent {
   }
 
   $onInit() {
-    //this.data.fetchV1().then((authors) => this.authors = authors);
+    this.data.fetchV1().then((authors) => this.authors = authors);
     //this.data.fetchV2().then((authors) => this.authors = authors);
-    this.data.fetchV3().then((authors) => this.authors = authors);
+    //this.data.fetchV3().then((authors) => this.authors = authors);
   }
 }
 
@@ -33,6 +33,5 @@ export default angular.module(name, [
     controller: AppComponent
   })
   .config(['apolloProvider', (apolloProvider) => {
-    console.log('apolloProvider', apolloProvider);
     apolloProvider.defaultClient(client);
   }])
