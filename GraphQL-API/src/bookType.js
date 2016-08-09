@@ -15,6 +15,7 @@ const bookType = new GraphQLObjectType({
     title: {type: GraphQLString},
     image: {type: GraphQLString},
     authorId: {type: GraphQLString},
+    description: {type: GraphQLString},
     author: {
       type: authorType,
       resolve: (book) => {
