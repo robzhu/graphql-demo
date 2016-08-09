@@ -1,42 +1,29 @@
-import { Component } from '@angular/core';
-import { Apollo } from 'angular2-apollo';
+import { Component, OnInit } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 
 import { AuthorComponent } from './app/author.component';
-
-import gql from 'graphql-tag';
-
-import client from './client';
+import { Data } from './shared/data.service';
 
 @Component({
   selector: 'app',
   template: `
-    <div *ngIf="!data.loading">
-      <author *ngFor="let author of data.authors" [author]="author"></author>
-    </div>
+    <author *ngFor="let author of authors | async" [author]="author"></author>
   `,
-  directives: [AuthorComponent]
+  directives: [AuthorComponent],
+  pipes: [AsyncPipe]
 })
-@Apollo({
-  client,
-  queries: () => ({
-    data: {
-      query: gql`
-        query getAuthors {
-          authors {
-            id
-            name
-            image
-            books {
-              id
-              image
-              title
-            }
-          }
-        }
-      `
-    }
-  })
-})
-export class AppComponent {
-  data: any;
+export class AppComponent implements OnInit {
+  authors: Promise<any>;
+
+  constructor(
+    private data: Data
+  ) {}
+
+  ngOnInit() {
+    this.authors = this.fetch(3);
+  }
+
+  fetch(type: number) {
+    return this.data[`fetchV${type}`]();
+  }
 }
