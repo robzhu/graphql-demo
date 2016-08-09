@@ -12,6 +12,7 @@ export function toResource(req, book) {
     title: book.title,
     author: toAuthorLink(req, author),
     image: book.image,
+    description: book.description,
   }
 }
 
