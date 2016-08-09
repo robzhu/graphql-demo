@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-async-filter": "^1.0.1",
     "apollo-client": "^0.4.11",
     "graphql-tag": "^0.1.11",
     "whatwg-fetch": "^1.0.0"

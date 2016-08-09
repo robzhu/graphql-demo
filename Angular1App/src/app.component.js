@@ -1,4 +1,5 @@
 import angular from 'angular';
+import asyncFilter from 'angular-async-filter';
 
 import client from './client';
 import AuthorComponent from './app/author.component';
@@ -11,9 +12,11 @@ class AppComponent {
   }
 
   $onInit() {
-    this.data.fetchV1().then((authors) => this.authors = authors);
-    //this.data.fetchV2().then((authors) => this.authors = authors);
-    //this.data.fetchV3().then((authors) => this.authors = authors);
+    this.authors = this.fetch(1);
+  }
+
+  fetch(type) {
+    return this.data[`fetchV${type}`]();
   }
 }
 
@@ -24,11 +27,12 @@ const name = 'app';
 export default angular.module(name, [
   AuthorComponent.name,
   DataService.name,
-  ApolloProvider.name
+  ApolloProvider.name,
+  asyncFilter
 ])
   .component(name, {
     template: `
-      <author ng-repeat="author in $ctrl.authors" author="author"></author>
+      <author ng-repeat="author in $ctrl.authors | async" author="author"></author>
     `,
     controller: AppComponent
   })
