@@ -16,6 +16,16 @@ export function toResource(req, book) {
   }
 }
 
+export function toResourceSlim(req, book) {
+  const author = authors[book.authorId];
+  return {
+    href: toLink(req, book),
+    title: book.title,
+    author: toAuthorLink(req, author),
+    image: book.image,
+  }
+}
+
 class booksController {
   getBooks(req, res) {
     const bookLinks = books.map(book => {

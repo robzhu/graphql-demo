@@ -1,5 +1,5 @@
 import {authors, books} from './db';
-import {toResource as toBookResource} from './booksController';
+import {toResourceSlim as toBookResource} from './booksController';
 import {toLink as toBookLink} from './booksController';
 import {toResource as toAuthorResource} from './authorsController';
 
@@ -10,10 +10,6 @@ class everythingController {
       const booksByAuthor = books.filter(book => book.authorId === author.id);
       resource.books = booksByAuthor.map(
         book => {
-          // return {
-          //   href: toBookLink(req, book)
-          // };
-
           return toBookResource(req, book);
         }
       );
