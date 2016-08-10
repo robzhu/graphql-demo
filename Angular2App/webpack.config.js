@@ -14,8 +14,8 @@ module.exports = {
   entry: './src',
   module: {
     loaders: [
-      { test: /\.ts$/, loader: 'ts-loader' },
-      { test: /\.css$/, loader: 'style!css' }
+      { test: /\.ts$/, loader: 'ts-loader', exclude: /node_modules/ },
+      { test: /\.css$/, loader: 'style!css', exclude: /node_modules/ }
     ]
   },
   plugins: [
