@@ -6,7 +6,13 @@ import schema from './schema';
 const app = express();
 app.use(cors());
 
-app.use('/', graphqlHTTP({schema: schema, pretty: true, graphiql: true}));
+app.use('/', (req, res)=>{
+  graphqlHTTP({
+    schema: schema,
+    pretty: true,
+    graphiql: true
+  })(req,res);
+});
 
 const port = process.env.NODE_ENV ? 80 : 5000;
 
