@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
 
-import { BookComponent } from './book.component';
-
 @Component({
   selector: 'author',
   template: `
@@ -13,7 +11,6 @@ import { BookComponent } from './book.component';
       <book *ngFor="let book of author.books" [book]="book"></book>
     </div>
   `,
-  directives: [BookComponent]
 })
 export class AuthorComponent {
   @Input() author: any;
