@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
 
 import { AuthorComponent } from './app/author.component';
 import { Data } from './shared/data.service';
@@ -8,9 +7,7 @@ import { Data } from './shared/data.service';
   selector: 'app',
   template: `
     <author *ngFor="let author of authors | async" [author]="author"></author>
-  `,
-  directives: [AuthorComponent],
-  pipes: [AsyncPipe]
+  `
 })
 export class AppComponent implements OnInit {
   authors: Promise<any>;
