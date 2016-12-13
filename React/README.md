@@ -1,0 +1,1 @@
+Adapted from redux-reddit example: https://github.com/npverni/redux-reddit-example/
