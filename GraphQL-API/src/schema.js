@@ -34,6 +34,19 @@ const schema = new GraphQLSchema({
         resolve: (object, {keyword}, context, info) => {
           return books.filter(book => book.title.includes(keyword));
         }
+      },
+      secret: {
+        type: GraphQLString,
+        resolve: (object, args, context, {rootValue}) => {
+          const user = rootValue.user;
+          if(!user) {
+            return 'only authorized users can know the secret';
+          }
+          if(user.name === 'admin' && user.pass === '123') {
+            return 'howdy admin';
+          }
+          return 'who are you?';
+        }
       }
     }
   }),
