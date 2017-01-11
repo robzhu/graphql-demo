@@ -23,6 +23,17 @@ const schema = new GraphQLSchema({
         resolve: _ => {
           return books;
         }
+      },
+      bookSearch: {
+        type: new GraphQLList(bookType),
+        args: {
+          keyword: {
+            type: GraphQLString,
+          }
+        },
+        resolve: (object, {keyword}, context, info) => {
+          return books.filter(book => book.title.includes(keyword));
+        }
       }
     }
   }),
