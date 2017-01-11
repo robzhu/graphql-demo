@@ -6,7 +6,7 @@ import {
 } from 'graphql';
 import {authors, books} from './db';
 import authorType from './authorType';
-import bookType from './bookType';
+import {bookType, bookInputType} from './bookType';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -46,6 +46,23 @@ const schema = new GraphQLSchema({
             return 'howdy admin';
           }
           return 'who are you?';
+        }
+      }
+    }
+  }),
+  mutation: new GraphQLObjectType({
+    name: 'MutationRoot',
+    fields: {
+      addBook: {
+        type: bookType,
+        args: {
+          book: {
+            type: bookInputType,
+          }
+        },
+        resolve: (object, {book}) => {
+          books.push(book);
+          return book;
         }
       }
     }

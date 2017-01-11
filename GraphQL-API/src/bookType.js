@@ -2,12 +2,13 @@ import {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
+  GraphQLInputObjectType,
   GraphQLList,
 } from 'graphql';
 import {authors, books} from './db';
 import authorType from './authorType';
 
-const bookType = new GraphQLObjectType({
+export const bookType = new GraphQLObjectType({
   name: 'Book',
   description: 'Words on a page, tells a story.',
   fields:() => ({
@@ -22,6 +23,17 @@ const bookType = new GraphQLObjectType({
         return authors[book.authorId];
       }
     }
+  }),
+});
+
+export const bookInputType = new GraphQLInputObjectType({
+  name: 'BookInput',
+  fields:() => ({
+    id: {type: GraphQLString},
+    title: {type: GraphQLString},
+    image: {type: GraphQLString},
+    description: {type: GraphQLString},
+    authorId: {type: GraphQLString},
   }),
 });
 
