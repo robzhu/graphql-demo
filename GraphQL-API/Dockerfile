@@ -1,4 +1,4 @@
-FROM node:4.4-slim
+FROM node:7-slim
 
 ENV NODE_ENV production
 EXPOSE 80
